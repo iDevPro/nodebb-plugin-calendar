@@ -10,6 +10,7 @@
 #cal-headers-cont {
   overflow-y: scroll;
   width:100%;
+  height: 27px;
 }
 #cal-headers {
   height: 100%;

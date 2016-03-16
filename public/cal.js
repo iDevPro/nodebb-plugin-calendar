@@ -543,11 +543,20 @@ require(["moment", "datetimepicker", "translator"], function (moment, dtp, trans
           setTimeout(function () {
             view.user.a.attr("href", "/user/" + event.user.userslug);
             view.user.smalla.html(event.user.username);
-            view.user.img.attr({
-              src: event.user.picture,
-              alt: event.user.username,
-              "data-original-title": event.user.username
-            });
+            if (!!event.user.picture) {
+              view.user.img.show();
+              view.user.icon.hide();
+              view.user.img.attr({
+                src: event.user.picture,
+                alt: event.user.username,
+                "data-original-title": event.user.username
+              });
+            }else{
+              view.user.img.hide();
+              view.user.icon.show();
+              view.user.icon.css("background-color", event.user.iconbgcolor);
+              view.user.icon.html(event.user.icontext);
+            }
             view.user.small.attr("title", event.user.username);
 
             view.name.html(event.name);
@@ -721,6 +730,7 @@ require(["moment", "datetimepicker", "translator"], function (moment, dtp, trans
           a: it.find(".topic-profile-pic a"),
           smalla: it.find(".topic-profile-pic small > a"),
           img: it.find(".topic-profile-pic img"),
+          icon: it.find("#usericon"),
           small: it.find(".topic-profile-pic small")
         },
         name: it.find(".topic-title.name"),
@@ -774,7 +784,12 @@ require(["moment", "datetimepicker", "translator"], function (moment, dtp, trans
       }
       calendar.currentMonth.go();
     });
-    $(".button-today").click(calendar.actions.scrollToDate);
+    $(".button-today").click(function(){
+      calendar.actions.scrollToDate();
+      var mom = moment();
+      var day = calendar.days[mom.year()][mom.month()][mom.date() - 1].attr("id", "cal-day-selected");
+      calendar.actions.viewDay(day);
+    });
 
     (function () {
       function contains(string, arr) {
@@ -968,7 +983,6 @@ require(["moment", "datetimepicker", "translator"], function (moment, dtp, trans
     window.calendar = calendar;
 
     $(document).ready(function () {
-
       try {
         var loaded = JSON.parse($("#data_script").html());
         calendar.buffer = loaded.buffer;
@@ -1003,6 +1017,7 @@ require(["moment", "datetimepicker", "translator"], function (moment, dtp, trans
         });
       });
 
+      return;
       var cal = $("#nodebb-plugin-calendar");
       if (cal.length) {
         console.log("Init fixing content styling...");

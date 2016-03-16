@@ -216,12 +216,13 @@
         <div class="event topic trans panel panel-default">
           <div class="topic-text panel-body">
             <div class="topic-profile-pic hidden-xs text-center user">
-              <a href="/user/{userslug}">
-                <img src="{picture}" alt="{username}" class="profile-image user-img" title="" data-original-title="{username}">
-              </a>
+              
+              <img component="user/picture" id="avatar" src="{picture}" style="width:40px;height:40px;" class="user-picture"/>
+              <div component="user/picture" id="usericon" class="user-icon" style="width: 40px;height: 40px;line-height:40px;font-size:2.2rem;"></div>
               <small class="username" title="{username}">
                 <a href="/user/{userslug}">{username}</a>
               </small>
+              
             </div>
             <h3 class="topic-title">
               <i class="edit-event-button fa fa-pencil-square-o" data-toggle="modal" data-target="#editEvent"></i>

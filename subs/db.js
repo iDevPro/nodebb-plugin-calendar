@@ -243,7 +243,7 @@ var db = module.exports = {
   },
   users: {
     getInfo: function(uid, callback){
-      user.getUserFields(uid, ["uid", "username", "userslug", "picture"], callback);
+      user.getUserData(uid, callback);
     },
     isAdministrator: user.isAdministrator
   }
