@@ -1,5 +1,5 @@
 <div class="nodebb-plugin-calendar" id="nodebb-plugin-calendar">
-  <div id="editEvent" class="modal fade">
+  <div id="editEvent" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -13,7 +13,7 @@
               <label for="event-name">[[calendar:event_name]]</label>
               <input id="event-name" class="form-control" placeholder="[[calendar:event_name]]" />
             </div>
-            <div class="checkbox">
+            <div class="">
               <label>
                 <input type="checkbox" id="event-allday" /> [[calendar:all_day]]
               </label>
@@ -44,7 +44,7 @@
               <label for="event-editors">[[calendar:editors]]</label>
               <input id="event-editors" class="form-control" placeholder="[[calendar:start_typing]]" />
             </div>
-            <div class="checkbox">
+            <div class="">
               <label>
                 <input type="checkbox" id="event-public" /> [[calendar:public]]
               </label>
@@ -275,7 +275,8 @@
   <style>
     @import url("/plugins/nodebb-plugin-calendar/public/css/main.css");
   </style>
-
+  <script src="/plugins/nodebb-plugin-calendar/public/typeahead.bundle.js"></script>
+  <script src="/plugins/nodebb-plugin-calendar/public/bootstrap-tagsinput.js"></script>
   <div id="data_script">
     {
       "canCreate": {canCreate},
@@ -283,6 +284,5 @@
       "buffer": {buffer}
     }
   </div>
-  <script src="/plugins/nodebb-plugin-calendar/public/typeahead.bundle.js"></script>
   <script src="/plugins/nodebb-plugin-calendar/public/cal.js"></script>
 </div>

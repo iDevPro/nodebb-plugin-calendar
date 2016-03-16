@@ -2,8 +2,7 @@
 
 "use strict";
 
-var posttools = module.parent.parent.require("./postTools"),
-  topics = module.parent.parent.require("./topics"),
+var topics = module.parent.parent.require("./topics"),
   postsModule = module.parent.parent.require("./posts");
 
 var posts = module.exports = {
@@ -38,7 +37,7 @@ var posts = module.exports = {
         return callback(err);
       }
       //console.log(JSON.stringify(event, null, 2));
-      posttools.edit({
+      postsModule.edit({
         uid: event.uid,
         pid: event.pid,
         title: event.name,

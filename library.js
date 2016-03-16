@@ -319,6 +319,7 @@
     },
     createEvent: function(socket, event, callback){
       //console.log(JSON.stringify(event, null, 2));
+      console.log(event);
       var settings;
       async.waterfall([
         async.apply(user, socket.uid, null),
